@@ -32,6 +32,7 @@ app.get('/', (req, res) => {
   // Output result
   proc.on('close', (code) => {
     console.log(`child process exited with code ${code}`);
+	res.setHeader('Content-Type', 'text/plain');
     res.send(result);
   });
 })
