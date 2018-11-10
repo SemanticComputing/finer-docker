@@ -6,10 +6,8 @@ WORKDIR /opt/hfst
 RUN cd /opt/hfst \
    && apt-get -qq update \
    && apt-get -qq -y install wget \
-   && wget http://apertium.projectjj.com/apt/nightly/pool/main/h/hfst/libhfst52_3.15.0+g3687~c75708cc-1~xenial1_amd64.deb \
-   && wget http://apertium.projectjj.com/apt/nightly/pool/main/h/hfst/hfst_3.15.0+g3687~c75708cc-1~xenial1_amd64.deb \
-   && dpkg -i libhfst52_3.15.0+g3687~c75708cc-1~xenial1_amd64.deb \
-   && dpkg -i hfst_3.15.0+g3687~c75708cc-1~xenial1_amd64.deb \
+   && wget https://apertium.projectjj.com/apt/install-nightly.sh -O - | bash \
+   && apt-get -qq -y install hfst libhfst52 \
    && apt-get install -qq -y nodejs \
    && apt-get install -qq -y npm
 RUN apt-get install -qq -y python3
