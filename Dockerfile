@@ -2,10 +2,10 @@ FROM ubuntu:xenial-20180123
 
 MAINTAINER Arttu Oksanen
 EXPOSE 3000
-WORKDIR /opt/hfst
-RUN cd /opt/hfst \
-   && apt-get -qq update \
+
+RUN apt-get -qq update \
    && apt-get -qq -y install wget \
+   && apt-get -qq -y install unzip \
    && wget https://apertium.projectjj.com/apt/install-nightly.sh -O - | bash \
    && apt-get -qq -y install hfst libhfst52 \
    && apt-get install -qq -y nodejs \
@@ -16,8 +16,13 @@ RUN apt-get -y install locales \
 ENV LC_ALL en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LANG en_US.UTF-8
-COPY finer /opt/finer
+WORKDIR /opt
+RUN wget http://hardwick.fi/finnish-tagtools/finnish-tagtools-1.2-gpl3-local.zip \
+    && unzip finnish-tagtools-1.2-gpl3-local.zip \
+	&& mv finnish-tagtools-local finer \
+	&& rm finnish-tagtools-1.2-gpl3-local.zip
 COPY webservice /opt/finer-webservice
+
 RUN cd /opt/finer-webservice \
    && rm -rf node_modules \
    && npm install \

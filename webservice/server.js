@@ -6,6 +6,7 @@ app.get('/', (req, res) => {
   // Spawn child process
   const spawn = require('child_process').spawn;
   const proc = spawn('../finer/finnish-nertag', {
+    cwd: '/opt/finer',
     stdio: [
       'pipe', // Use parent's stdin for child
       'pipe', // Pipe child's stdout to parent
