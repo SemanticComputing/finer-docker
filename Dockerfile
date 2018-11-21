@@ -17,10 +17,10 @@ ENV LC_ALL en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LANG en_US.UTF-8
 WORKDIR /opt
-RUN wget http://hardwick.fi/finnish-tagtools/finnish-tagtools-1.2-gpl3-local.zip \
-    && unzip finnish-tagtools-1.2-gpl3-local.zip \
-	&& mv finnish-tagtools-local finer \
-	&& rm finnish-tagtools-1.2-gpl3-local.zip
+RUN wget https://korp.csc.fi/download/finnish-tagtools/v1.3/finnish-tagtools-1.3.0.zip \
+   && unzip finnish-tagtools-1.3.0.zip \
+   && mv finnish-tagtools-1.3.0 finer \
+   && rm finnish-tagtools-1.3.0.zip
 COPY webservice /opt/finer-webservice
 
 RUN cd /opt/finer-webservice \
