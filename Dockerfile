@@ -21,6 +21,7 @@ RUN wget https://korp.csc.fi/download/finnish-tagtools/v1.3/finnish-tagtools-1.3
    && unzip finnish-tagtools-1.3.0.zip \
    && mv finnish-tagtools-1.3.0 finer \
    && rm finnish-tagtools-1.3.0.zip
+RUN sed -i "s|\$TAG/hfst-pmatch|hfst-pmatch|" finer/finnish-nertag
 COPY webservice /opt/finer-webservice
 
 RUN cd /opt/finer-webservice \
