@@ -1,4 +1,4 @@
-FROM ubuntu:xenial-20180123
+FROM ubuntu:18.04
 
 MAINTAINER Arttu Oksanen
 EXPOSE 3000
