@@ -1,16 +1,19 @@
-## Finer
+# Finer Docker
 
-Run FiNER as a web service
+Run FiNER as a web service in a Docker container.
 
-# Build Docker image
+FiNER (finnish-nertag) by FIN-CLARIN is available as part of [finnish-tagtools](https://korp.csc.fi/download/finnish-tagtools/).
 
-docker build --squash -t finer:latest .
+## Build
 
-# Run Docker container
+`docker build -t finer .`
 
-docker run --rm -p 19992:3000 -it finer:latest
+## Run
 
-# Test by running a GET request
+`docker run --rm -it -p 19992:3000 --name finer finer`
+
+## Usage
+
+Make a HTTP GET request:
 
 http://localhost:19992/?text=...
-

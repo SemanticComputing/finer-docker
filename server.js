@@ -4,9 +4,11 @@ const app = express()
 app.get('/', (req, res) => {
 
   // Spawn child process
+  const path = require('path');
+  const finer_cmd = path.resolve(__dirname, 'finer/finnish-nertag');
   const spawn = require('child_process').spawn;
-  const proc = spawn('../finer/finnish-nertag', {
-    cwd: '../finer',
+  const proc = spawn(finer_cmd, {
+    cwd: 'finer',
     stdio: [
       'pipe', // Use parent's stdin for child
       'pipe', // Pipe child's stdout to parent
