@@ -15,7 +15,7 @@ ENV LANG en_US.UTF-8
 WORKDIR /app
 
 ENV FINER_VERSION v1.3
-ENV FINER_DIR finnish-tagtools-1.3.0
+ENV FINER_DIR finnish-tagtools-1.3.2
 RUN wget https://korp.csc.fi/download/finnish-tagtools/$FINER_VERSION/$FINER_DIR.zip \
  && unzip $FINER_DIR.zip \
  && mv $FINER_DIR finer \
