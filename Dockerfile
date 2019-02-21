@@ -20,8 +20,6 @@ RUN wget https://korp.csc.fi/download/finnish-tagtools/$FINER_VERSION/$FINER_DIR
  && unzip $FINER_DIR.zip \
  && mv $FINER_DIR finer \
  && rm $FINER_DIR.zip
-RUN sed -i 's|PMATCH=\$TAG/hfst-pmatch|PMATCH=hfst-pmatch|' finer/finnish-nertag
-RUN sed -i 's|TOKENIZE="\$TAG/hfst-tokenize|TOKENIZE="hfst-tokenize|' finer/finnish-nertag
 RUN chown -R daemon finer
 
 COPY package.json server.js ./
