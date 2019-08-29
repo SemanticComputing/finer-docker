@@ -13,7 +13,7 @@ def index():
         result = ""
         for sentence in nertagger(text):
             for word in sentence:
-                result += word[0] + " " + word[1] + "\n"
+                result += word[0] + "\t" + word[1] + "\n"
         return Response(result, mimetype="text/plain")
     else:
         return Response("Error - You should provide the input text as 'text' GET/POST parameter", status=500, mimetype="text/plain")
