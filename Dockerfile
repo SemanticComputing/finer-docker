@@ -17,8 +17,8 @@ RUN pip3 install gunicorn
 
 WORKDIR /app
 
-ENV TAGTOOLS_VERSION v1.4
-ENV TAGTOOLS_DIR finnish-tagtools-1.4.0
+ENV TAGTOOLS_VERSION v1.5
+ENV TAGTOOLS_DIR finnish-tagtools-1.5.0
 RUN wget https://korp.csc.fi/download/finnish-tagtools/$TAGTOOLS_VERSION/$TAGTOOLS_DIR.zip \
  && unzip $TAGTOOLS_DIR.zip \
  && mv $TAGTOOLS_DIR finnish-tagtools \
