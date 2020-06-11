@@ -2,7 +2,7 @@ FROM ubuntu:18.04
 
 RUN apt-get -qq update \
  && apt-get -qq install wget \
- && wget https://apertium.projectjj.com/apt/install-release.sh -O - | bash \
+ && wget https://apertium.projectjj.com/apt/install-nightly.sh -O - | bash \
  && apt-get -qq install hfst libhfst52 python3 python3-pip python3-libhfst locales unzip git swig \
  && locale-gen en_US.UTF-8
 
