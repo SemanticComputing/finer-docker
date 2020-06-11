@@ -1,11 +1,5 @@
 FROM ubuntu:18.04
 
-ENV GUNICORN_WORKER_AMOUNT 4
-ENV GUNICORN_TIMEOUT 300
-ENV GUNICORN_RELOAD ""
-
-EXPOSE 3000
-
 RUN apt-get -qq update \
  && apt-get -qq install wget \
  && wget https://apertium.projectjj.com/apt/install-release.sh -O - | bash \
@@ -42,6 +36,12 @@ RUN wget https://raw.githubusercontent.com/Traubert/nlp-tools/master/scripts/fin
  && sed -E -i "s|self\.regex_filename\ =\ '.+'|self\.regex_filename\ =\ '/app/finnish-tagtools/tag/lemma-errors\.tsv'|" finer.py
 
 COPY server.py ./
+
+ENV GUNICORN_WORKER_AMOUNT 4
+ENV GUNICORN_TIMEOUT 300
+ENV GUNICORN_RELOAD ""
+
+EXPOSE 3000
 
 USER 9008
 
