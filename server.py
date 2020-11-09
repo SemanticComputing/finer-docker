@@ -14,6 +14,16 @@ def index():
 
         result = ""
 
+        show_version_param = request.values.get("showVersion")
+        if show_version_param != "" and show_version_param != None:
+            show_version = False
+            try:
+                show_version = inputs.boolean(show_version_param)
+            except ValueError:
+                print("Invalid value for parameter showVersion: " + show_version_param)
+            if show_version == True:
+                result += "FiNER, version " + os.environ['TAGTOOLS_VERSION'][1:] + "\n\n"
+
         for sentence in nertagger(text):
             for word in sentence:
                 result += word[0] + "\t" + word[1] + "\n"
