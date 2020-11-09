@@ -36,6 +36,11 @@ RUN wget https://raw.githubusercontent.com/Traubert/nlp-tools/master/scripts/fin
 
 RUN tr '\n' '§' < finer.py | sed 's/self\.proper_tag1/self\.proper_tag2/2' | tr '§' '\n' > finer.py
 
+RUN sed -i 's/morpho\.index/morph\.index/; s/morpho\ =\ morpho\[/morph\ =\ morph\[/' finer.py
+
+COPY lemma-morph-exceptions.txt /app/
+RUN sed -i '/morph\[/ r lemma-morph-exceptions.txt' finer.py
+
 COPY server.py ./
 
 ENV GUNICORN_WORKER_AMOUNT 4

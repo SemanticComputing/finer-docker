@@ -1,0 +1,19 @@
+            elif surface == 'Maria' and lemma == 'mari' and '[CASE=PAR]' in morph:
+                lemma = 'maria'
+                idx = morph.index('[CASE=')
+                morph = morph[:idx] + '[CASE=NOM]'
+            elif surface == 'Maritta' and lemma == 'mari' and '[CASE=ABE]' in morph:
+                lemma = 'maritta'
+                idx = morph.index('[CASE=')
+                morph = morph[:idx] + '[CASE=NOM]'
+            elif surface == 'Kansa' and lemma == 'ka' and '[POSS=3]' in morph:
+                lemma = 'kansa'
+                idx = morph.index('[CASE=')
+                morph = morph[:idx] + '[CASE=NOM]'
+            elif surface == 'Line' and lemma == 'li' and '[CASE=COM]' in morph:
+                lemma = 'line'
+                idx = morph.index('[CASE=')
+                morph = morph[:idx] + '[CASE=NOM]'
+            elif (surface == 'Noin' or surface == 'noin') and lemma == 'noki':
+                lemma = 'noin'
+                morph = '[POS=PARTICLE][SUBCAT=ADVERB]'
