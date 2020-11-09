@@ -32,8 +32,7 @@ RUN cd FinnPos/src/tagger \
  && cd ../../.. \
  && rm -rf FinnPos
 
-RUN wget https://raw.githubusercontent.com/Traubert/nlp-tools/master/scripts/finer.py \
- && sed -E -i "s|self\.regex_filename\ =\ '.+'|self\.regex_filename\ =\ '/app/finnish-tagtools/tag/lemma-errors\.tsv'|" finer.py
+RUN wget https://raw.githubusercontent.com/Traubert/nlp-tools/master/scripts/finer.py
 
 COPY server.py ./
 

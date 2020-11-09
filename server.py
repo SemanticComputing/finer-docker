@@ -1,5 +1,7 @@
 import finer
 from flask import Flask, request, Response
+from flask_restful import inputs
+import os
 
 app = Flask(__name__)
 
@@ -11,6 +13,7 @@ def index():
         print(nertagger(text))
 
         result = ""
+
         for sentence in nertagger(text):
             for word in sentence:
                 result += word[0] + "\t" + word[1] + "\n"
@@ -18,5 +21,5 @@ def index():
     else:
         return Response("Error - You should provide the input text as 'text' GET/POST parameter", status=500, mimetype="text/plain")
         
-nertagger = finer.Finer("/app/finnish-tagtools/tag") # pakollinen argumentti joka osoittaa FiNERin käyttämään datahakemistoon
+nertagger = finer.Finer("/app/finnish-tagtools/tag/") # pakollinen argumentti joka osoittaa FiNERin käyttämään datahakemistoon
 print("FiNER ready and accepting connections.")
