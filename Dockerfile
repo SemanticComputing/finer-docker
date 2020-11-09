@@ -34,6 +34,8 @@ RUN cd FinnPos/src/tagger \
 
 RUN wget https://raw.githubusercontent.com/Traubert/nlp-tools/master/scripts/finer.py
 
+RUN tr '\n' '§' < finer.py | sed 's/self\.proper_tag1/self\.proper_tag2/2' | tr '§' '\n' > finer.py
+
 COPY server.py ./
 
 ENV GUNICORN_WORKER_AMOUNT 4
